@@ -18,13 +18,12 @@ namespace CleverbotLib
             return new Models.CleverbotResponse(resp);
         }
 
-        public static Models.CleverbotResponse Talk(string message, Models.CleverbotResponse previousResponse = null)
+        public static Models.CleverbotResponse Talk(string message, Models.CleverbotResponse previousResponse)
         {
-            string force = null;
             if (previousResponse != null)
                 return Talk(message, previousResponse.CleverbotState);
             else
-                return Talk(message, force);
+                return Talk(message);
         }
 
         public static void SetAPIKey(string apiKey)

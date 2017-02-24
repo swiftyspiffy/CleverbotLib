@@ -11,20 +11,20 @@ namespace CleverbotLib_Example_Application
         static void Main(string[] args)
         {
             Console.WriteLine("CleverbotLib Example Application");
+
             Console.WriteLine("Insert your API key:");
-            string apiKey = Console.ReadLine();
-            CleverbotLib.Core.SetAPIKey(apiKey);
+            CleverbotLib.Core.SetAPIKey(Console.ReadLine());
+
             Console.WriteLine("Now begin your conversation!");
+
             CleverbotLib.Models.CleverbotResponse resp = null;
-            while(true)
+            while (true)
             {
                 Console.Write("You: ");
-                string myMessage = Console.ReadLine();
-                string force = null;
                 if (resp == null)
-                    resp = CleverbotLib.Core.Talk(myMessage, force);
+                    resp = CleverbotLib.Core.Talk(Console.ReadLine());
                 else
-                    resp = CleverbotLib.Core.Talk(myMessage, resp);
+                    resp = CleverbotLib.Core.Talk(Console.ReadLine(), resp);
                 Console.WriteLine($"Cleverbot: {resp.Output}");
             }
         }
